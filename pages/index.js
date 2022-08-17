@@ -3,7 +3,7 @@ import {io} from "socket.io-client";
 import { useState } from 'react';
 import Chat from './Chat';
 
-const socket = io.connect("http://192.168.1.42:3770");
+const socket = io.connect("https://turbichat.herokuapp.com");
 
 export default function Home() {
   const [username, setUsername] = useState("");
@@ -55,8 +55,8 @@ export default function Home() {
         }
       </main>
       <footer>
-        <p>Desarrollado por "Hoy es dia de no se que Development Studios"</p>
-        <p>Producido por "Ay Nose Productions"</p>
+        <p>Desarrollado por Hoy es dia de no se que Development Studios</p>
+        <p>Producido por Ay Nose Productions</p>
         <p>- 2022 -</p>
       </footer>
     </>    
