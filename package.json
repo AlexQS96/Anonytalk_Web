@@ -9,9 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@quiq/react-linkify": "^0.2.5",
     "next": "12.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-scroll-to-bottom": "^4.2.0",
+    "socket.io-client": "^3.1.3"
   },
   "devDependencies": {
     "eslint": "8.22.0",
