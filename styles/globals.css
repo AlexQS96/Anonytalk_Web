@@ -26,7 +26,6 @@ main{
 footer{
   display: flex;
   flex-direction: column;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
   padding: 1rem;
   margin-top: 1.5rem;
 }
@@ -77,6 +76,7 @@ footer p{
   row-gap: 1rem;
   width: 85%;
   margin: 1rem auto;
+  max-width: 500px;
 }
 
 .login img{
