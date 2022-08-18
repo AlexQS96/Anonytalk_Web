@@ -23,12 +23,21 @@ export default function Home() {
       <Head>
         <title>Turbi Chat</title>
       </Head>
+      <header>
+        {
+          logged &&
+          <>
+            <a href='/'><img src='/img/hacker.svg' alt='Anonymous'/></a>
+            <p>Chat: {room}</p>
+          </>
+        }
+      </header>
       <main>
         {
           !logged?
           (
             <div className="login">
-              <img src='/img/hacker.svg' alt='Anonymous'/>
+              <a href='/'><img src='/img/hacker.svg' alt='Anonymous'/></a>
               <h1>Bienvenido a TurbiChat</h1>
               <h3>El Chat Turbina de la WEB Profunda</h3>
               <input
