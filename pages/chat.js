@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import Linkify from "@quiq/react-linkify";
 
-const chat = ({ socket, username, room }) => {
+const Chat = ({ socket, username, room }) => {
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
 
@@ -65,4 +65,4 @@ const chat = ({ socket, username, room }) => {
     );
 };
 
-export default chat;
+export default Chat;
