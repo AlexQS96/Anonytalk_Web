@@ -124,7 +124,7 @@ footer p{
 .messages_box{
   grid-row: 1;
   height: 400px;
-  padding: 1rem 0.5rem;
+  padding: 0.5rem;
 }
 
 .messages_box div div{
