@@ -28,7 +28,7 @@ export default function Home() {
         {
           logged &&
           <>
-            <Link to='/' replace='true'><img src='/img/hacker.svg' alt='Anonymous'/></Link>
+            <Link href='/'><a><img src='/img/hacker.svg' alt='Anonymous'/></a></Link>
             <p>Chat: {room}</p>
           </>
         }
@@ -38,7 +38,7 @@ export default function Home() {
           !logged?
           (
             <div className="login">
-              <Link to='/' replace='true'><img src='/img/hacker.svg' alt='Anonymous'/></Link>
+              <Link href='/'><a><img src='/img/hacker.svg' alt='Anonymous'/></a></Link>
               <h1>Bienvenido a TurbiChat</h1>
               <h3>El Chat Turbina de la WEB Profunda</h3>
               <input
