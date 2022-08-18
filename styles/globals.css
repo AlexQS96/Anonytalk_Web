@@ -107,8 +107,8 @@ footer p{
 
 .messages_box{
   grid-row: 1;
-  height: 100%;
-  padding: 1rem;
+  height: 300px;
+  padding: 1rem 0.5rem 1rem 1rem;
 }
 
 .messages_box div div{
@@ -184,4 +184,10 @@ footer p{
   max-height: 5rem;
   resize: none;
   border-radius: 0.5rem 0 0 0.5rem !important;
+}
+
+@media screen and (min-width : 768px)  {
+  .messages_box{
+    height: 500px;
+  }
 }

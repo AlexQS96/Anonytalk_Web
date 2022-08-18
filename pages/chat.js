@@ -32,9 +32,8 @@ const Chat = ({ socket, username, room }) => {
 
     return (
         <div className="chat_box">
-            
             <div className="messages_box">
-                <ScrollToBottom>
+                <ScrollToBottom className="messages_box">
                 {
                     messageList.map((userMessage, index) => {
                         return (
