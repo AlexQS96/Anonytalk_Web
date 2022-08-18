@@ -32,6 +32,7 @@ header p{
 
 header img{
   width: 3rem;
+  cursor: pointer;
 }
 
 main{
