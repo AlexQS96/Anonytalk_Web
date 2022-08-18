@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import {io} from "socket.io-client";
 import { useState } from 'react';
-import Chat from './Chat';
+import Chat from './chat';
 
 const socket = io.connect("https://turbichat.herokuapp.com");
 
