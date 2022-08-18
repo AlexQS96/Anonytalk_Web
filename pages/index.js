@@ -2,6 +2,7 @@ import Head from 'next/head'
 import {io} from "socket.io-client";
 import { useState } from 'react';
 import Chat from './chat';
+import Link from 'next/link';
 
 const socket = io.connect("https://turbichat.herokuapp.com");
 
@@ -27,7 +28,7 @@ export default function Home() {
         {
           logged &&
           <>
-            <a href='/'><img src='/img/hacker.svg' alt='Anonymous'/></a>
+            <Link><a href='/'><img src='/img/hacker.svg' alt='Anonymous'/></a></Link>
             <p>Chat: {room}</p>
           </>
         }
@@ -37,7 +38,7 @@ export default function Home() {
           !logged?
           (
             <div className="login">
-              <a href='/'><img src='/img/hacker.svg' alt='Anonymous'/></a>
+              <Link><a href='/'><img src='/img/hacker.svg' alt='Anonymous'/></a></Link>
               <h1>Bienvenido a TurbiChat</h1>
               <h3>El Chat Turbina de la WEB Profunda</h3>
               <input
