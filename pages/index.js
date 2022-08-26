@@ -3,7 +3,7 @@ import {io} from "socket.io-client";
 import { useState, useEffect } from 'react';
 import Chat from './chat';
 
-const socket = io.connect("https://turbichat.herokuapp.com");
+const socket = io.connect("https://chatbackend-pi.vercel.app");
 //const socket = io.connect("http://192.168.1.42:3770");
 
 export default function Home() {
