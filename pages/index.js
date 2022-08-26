@@ -1,23 +1,37 @@
 import Head from 'next/head'
 import {io} from "socket.io-client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Chat from './chat';
-import Link from 'next/link';
 
 const socket = io.connect("https://turbichat.herokuapp.com");
+//const socket = io.connect("http://192.168.1.42:3770");
 
 export default function Home() {
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
+  const [roomData, setRoomData] = useState(0);
   const [logged, setLogged] = useState(false);
 
   const joinRoom = () => {
     if (username !== "" && room !== "") {
-      socket.emit("join_room", room);
+      socket.emit("join_room", [username,room]);
       setLogged(true);
     }
   };
 
+  const leaveRoom = () => {
+    socket.emit('leave_room', { username, room });
+    setLogged(false);
+    setUsername("");
+    setRoom("");
+  };
+
+  useEffect(() => {
+    socket.on("room_clients", (data) => {
+      setRoomData(data);
+    });
+
+  }, [socket])
 
   return (
     <>
@@ -28,8 +42,9 @@ export default function Home() {
         {
           logged &&
           <>
-            <img onClick={e => setLogged(false)} src='/img/hacker.svg' alt='Anonymous'/>
-            <p>Chat: {room}</p>
+            <img className='logo' onClick={() => leaveRoom()} src='/img/hacker.svg' alt='Anonymous'/>
+            <p><img src='/icons/chat.svg' alt='users'/> {room}</p>
+            <p><img src='/icons/users.svg' alt='users'/> {roomData}</p>
           </>
         }
       </header>
@@ -40,17 +55,16 @@ export default function Home() {
             <div className="login">
               <img src='/img/hacker.svg' alt='Anonymous'/>
               <h1>Bienvenido a TurbiChat</h1>
-              <h3>El Chat Turbina de la WEB Profunda</h3>
               <input
                 type="text"
-                placeholder="Ingresa un Nick"
+                placeholder="Ingresa un Nombre"
                 onChange={(event) => {
                   setUsername(event.target.value);
                 }}
               />
               <input
                 type="text"
-                placeholder="ID del Chat"
+                placeholder="Nombre del Chat"
                 onChange={(event) => {
                   setRoom(event.target.value);
                 }}
@@ -65,9 +79,7 @@ export default function Home() {
         }
       </main>
       <footer>
-        <p>Desarrollado por Hoy es dia de no se que Development Studios</p>
-        <p>Producido por Ay Nose Productions</p>
-        <p>- 2022 -</p>
+        <p>Chatea anonimamente</p>
       </footer>
     </>    
   )

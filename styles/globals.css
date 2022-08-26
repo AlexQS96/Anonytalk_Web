@@ -21,18 +21,30 @@ a{
 header{
   display: flex;
   align-items: center;
-  padding: 0.5rem 1rem;
+  justify-content: space-between;
+  padding: 0.5rem 1rem 1.4rem 0.5rem;
   color: white;
+  position: relative;
 }
 
 header p{
   font-size: 1.5rem;
-  margin-left: auto;
+}
+
+header p:nth-of-type(1),
+header p:nth-of-type(2){
+  display: flex;
+  align-items: center;
+  grid-gap: 0.5rem;
+}
+
+.logo{
+  width: 3rem;
+  cursor: pointer;
 }
 
 header img{
-  width: 3rem;
-  cursor: pointer;
+  width: 40px;
 }
 
 main{
@@ -44,7 +56,6 @@ footer{
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  margin-top: 1.5rem;
 }
 
 footer p{
@@ -94,7 +105,7 @@ footer p{
   row-gap: 1rem;
   width: 85%;
   margin: 1rem auto;
-  max-width: 500px;
+  max-width: 400px;
 }
 
 .login img{
@@ -105,12 +116,6 @@ footer p{
 .login h1,
 .login h3{
   color: white;
-}
-
-.chat_box{
-  display: grid;
-  height: 100%;
-  grid-template-rows: 90% 10%;
 }
 
 .login input{
@@ -124,14 +129,29 @@ footer p{
 }
 
 .messages_box{
-  grid-row: 1;
-  height: 400px;
-  padding: 0.5rem;
+  height: 55vh;
+  overflow: auto;
+  padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
 }
 
-.messages_box div div{
-  margin-bottom: 1rem;
+*::-webkit-scrollbar {
+  width: 10px;
 }
+
+*::-webkit-scrollbar-track {
+  position: absolute;
+  right: -3rem;
+  backdrop-filter: blur(5px);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #4a4a4a;
+  border-radius: 10px;
+}
+
 
 .message{
   display: flex;
@@ -157,15 +177,16 @@ footer p{
 .message_text{
   white-space: pre-wrap;
   overflow-wrap: break-word;
-  padding-top: 0.5rem;
+  padding-top: 0.2rem;
   padding-bottom: 1rem;
 }
 
 .message p:nth-child(3){
   position: absolute;
-  bottom: 0;
+  bottom: -7px;
   right: 10px;
   text-align: right;
+  font-weight: 500;
 }
 
 #you{
@@ -182,30 +203,46 @@ footer p{
 }
 
 #other span{
-  background-color: rgb(128, 143, 255);
+  background-color: rgb(52 78 166);
+  color: white;
+}
+
+#botmsg{
+  justify-content: center;
+}
+
+#botmsg span{
+  background-color: #42424275;
+  color: white;
+  width: 100%;
+  text-align: center;
+  height: 4rem;
+  padding-top: 1.3rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .userText{
   display: flex;
-  grid-row: 2;
-  height: 5rem;
   padding: 0 0.5rem;
+  height: 4rem;
 }
 
 .userText textarea{
-  text-indent: 5px;
   padding: 0.5rem;
   outline: none;
   border-style: none;
   font-size: 20px;
   width: 100%;
-  max-height: 5rem;
   resize: none;
   border-radius: 0.5rem 0 0 0.5rem !important;
 }
 
-@media screen and (min-width : 768px)  {
+@media (min-height: 730px) {
   .messages_box{
-    height: 500px;
+    height: 66vh;
   }
 }

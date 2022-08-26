@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import ScrollToBottom from "react-scroll-to-bottom";
+import { useState, useEffect, useRef } from "react";
 import Linkify from "@quiq/react-linkify";
 
 const Chat = ({ socket, username, room }) => {
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
+    const lastMessage = useRef(null);
 
     const sendMessage = async () => {
         if (currentMessage !== "") {
@@ -25,29 +25,32 @@ const Chat = ({ socket, username, room }) => {
     };
 
     useEffect(() => {
+        lastMessage.current.scrollTop = lastMessage.current.scrollHeight;
+      }, [messageList]);
+    
+    useEffect(() => {
         socket.on("receive_message", (data) => {
           setMessageList((list) => [...list, data]);
         });
+
     }, [socket]);
 
     return (
         <div className="chat_box">
-            <div className="messages_box">
-                <ScrollToBottom className="messages_box">
-                {
-                    messageList.map((userMessage, index) => {
-                        return (
-                            <div className="message" key={index} id={username === userMessage.author ? "you" : "other"}>
-                                <Linkify>
-                                    <p>{userMessage.author}</p>
-                                    <p className="message_text">{userMessage.message}</p>
-                                    <p id="time">{userMessage.time}</p>
-                                </Linkify>
-                            </div>
-                        )
-                    })
-                }
-                </ScrollToBottom>
+            <div className="messages_box" ref={lastMessage}>
+            {
+                messageList.map((userMessage, index) => {
+                    return (
+                        <div className="message" key={index} id={username === userMessage.author ? "you" : username !== userMessage.author && userMessage.author !== ''? "other" : userMessage.author === '' && "botmsg"}>
+                            <Linkify>
+                                <p>{userMessage.author}</p>
+                                <p className="message_text">{userMessage.message}</p>
+                                <p id="time">{userMessage.time}</p>
+                            </Linkify>
+                        </div>
+                    )
+                })
+            }
             </div>
             <div className="userText">
                 <textarea
