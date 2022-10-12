@@ -1,50 +1,47 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
   height: 100%;
   overflow-x: hidden;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: black;
+}
+
+html{
+  background-image: url("/img/chatpattern.png");
+  background-size: 10em 10em;
 }
 
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
-a{
-  color: white;
-  font-weight: bold;
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb{
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+button{
+  cursor: pointer;
+  outline: none;
+  border-style: none;
+  border-radius: 0.5rem;
 }
 
 header{
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1rem 1.4rem 0.5rem;
-  color: white;
-  position: relative;
-}
-
-header p{
-  font-size: 1.5rem;
-}
-
-header p:nth-of-type(1),
-header p:nth-of-type(2){
-  display: flex;
-  align-items: center;
-  grid-gap: 0.5rem;
-}
-
-.logo{
-  width: 3rem;
-  cursor: pointer;
-}
-
-header img{
-  width: 40px;
+  align-items: flex-start;
+  padding: 1rem 1rem 0;
+  background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,1) 100%);
 }
 
 main{
@@ -53,15 +50,27 @@ main{
 }
 
 footer{
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
+  padding-block: 1rem;
+  background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
 }
 
-footer p{
-  color: white;
-  font-weight: bold;
-  text-align: center;
+.social{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 1rem;
+  padding-left: 1rem;
+}
+
+.social a img{
+  display: flex;
+  width: 20px;
+  filter: opacity(0.7);
+  transition: filter .2s;
+}
+
+.social a img:hover{
+  filter: contrast(0.8);
 }
 
 #__next{
@@ -70,179 +79,245 @@ footer p{
   height: 100%;
 }
 
-.btn1{
-  height: 3rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  background-color: white;
-  color: black;
-  font-size: 0.9rem;
-}
-
-.btn2{
-  height: 100%;
-  text-transform: uppercase;
-  font-weight: bold;
-  padding: 0.5rem 1rem;
-  font-size: 1.5rem;
-  background-color: rgb(56, 56, 56);
-  border-left: 1px solid rgba(0, 0, 0, 0.3) !important;
-  color: white;
-  border-radius: 0 0.5rem 0.5rem 0 !important;
-}
-
-.btnbase{
+[data-type-logo]{
+  width: 3rem;
   cursor: pointer;
-  outline: none;
-  border-style: none;
-  border-radius: 0.5rem;
+}
+
+[data-type-icon]{
+  display: flex;
+  align-items: center;
+  margin-top: 0.3rem;
+  font-weight: bold;
+  gap: 0.3rem;
+}
+
+[data-type-icon] img{
+  width: 30px;
+}
+
+.button_1{
+  font-weight: 600;
+  background-color: #27EF9B;
+  color: #fff;
+  padding: 1rem;
+  width: fit-content;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.home{
+  display: grid;
+  grid-template-areas: 
+  'logo'
+  'login';
+  place-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.home [data-type-logo-bg]{
+  width: 8rem;
+  object-fit: contain;
+  grid-area: logo;
+}
+
+[data-type-user-index]{
+  grid-area: login;
+  width: 100%;
+}
+
+[data-type-headline]{
+  margin-inline: auto;
+  width: fit-content;
+  margin-bottom: 2rem;
+  margin-top: -5rem;
+}
+
+[data-type-headline] h4{
+  text-align: right;
+  margin-right: 0.5rem;
+  color: rgba(0,0,0,0.7);
+}
+
+[data-type-headline] h1{
+  font-family: 'Varela Round', sans-serif;
+  letter-spacing: 0.5rem;
+  color: rgba(0,0,0,0.8);
+  font-size: 3rem;
 }
 
 .login{
   display: flex;
   flex-direction: column;
-  text-align: center;
-  row-gap: 1rem;
   width: 85%;
   margin: 1rem auto;
   max-width: 400px;
-}
-
-.login img{
-  width: 4rem;
-  margin: 0 auto;
+  border: 1.5px solid rgba(0,0,0,0.03);
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  gap: 1rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 5%), 0 4px 6px -4px rgb(0 0 0 / 5%);
 }
 
 .login h1,
 .login h3{
-  color: white;
+  color: #000;
+}
+
+.login label{
+  font-style: italic;
+  margin-left: 0.3rem;
+  margin-bottom: -0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  color: rgba(0,0,0,0.7);
 }
 
 .login input{
   outline: none;
   border-style: none;
-  border: 1px solid black;
+  border: 1.5px solid rgba(0,0,0,0.1);
   height: 3rem;
   border-radius: 0.5rem;
   text-indent: 5px;
   font-size: 20px;
+  transition: border-color .5s;
 }
 
-.messages_box{
-  height: 55vh;
-  overflow: auto;
-  padding: 1rem 0.5rem;
+.login .invalid{
+  border-color: rgb(255, 45, 45);
+}
+
+.login button{
+  font-size: 1rem;
+}
+
+.chat{
   display: flex;
+  flex: 1;
   flex-direction: column;
-  row-gap: 1rem;
-}
-
-*::-webkit-scrollbar {
-  width: 10px;
-}
-
-*::-webkit-scrollbar-track {
-  position: absolute;
-  right: -3rem;
-  backdrop-filter: blur(5px);
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: #4a4a4a;
-  border-radius: 10px;
-}
-
-
-.message{
-  display: flex;
-  width: 100%;
-}
-
-.message span{
-  border-radius: 0.5rem;
-  text-align: left;
-  width: 10rem;
-  padding: 0.6rem;
-  position: relative;
-}
-
-.message span p:nth-child(1){
-  position: absolute;
-  left: 10px;
-  top: -10px;
-  font-weight: bold;
-}
-
-.message_text a,
-.message_text{
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  padding-top: 0.2rem;
-  padding-bottom: 1rem;
-}
-
-.message p:nth-child(3){
-  position: absolute;
-  bottom: -7px;
-  right: 10px;
-  text-align: right;
-  font-weight: 500;
-}
-
-#you{
-  justify-content: flex-start;
-}
-
-#you span{
-  background-color: rgb(80, 80, 255) !important;
-  color: white;
-}
-
-#other{
-  justify-content: flex-end;
-}
-
-#other span{
-  background-color: rgb(52 78 166);
-  color: white;
-}
-
-#botmsg{
+  height: 100%;
   justify-content: center;
 }
 
-#botmsg span{
-  background-color: #42424275;
-  color: white;
-  width: 100%;
-  text-align: center;
-  height: 4rem;
-  padding-top: 1.3rem;
+[data-type-messages]{
+  color: #000;
+  overflow-y: auto;
+  height: calc(70vh - 6rem);
+  padding: 2rem;
+}
+
+[data-type-msgbox]{
+  margin-block: 1rem;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+[data-type-msgbox] a{
+  color: #fff;
   font-weight: bold;
-  font-size: 1.3rem;
+}
+
+.you,
+.other{
+  color: #fff;
+  max-width: 40vw;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.you p:nth-of-type(1),
+.other p:nth-of-type(1){
+  font-size: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+
+.you p:nth-of-type(3),
+.other p:nth-of-type(3){
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  text-align: right;
+}
+
+.you{
+  margin-right: auto;
+  background-color: #0091ff;
+}
+
+.other{
+  margin-left: auto;
+  background-color: #27e099;
+}
+
+.botmsg{
+  background-color: #00000090;
+  color: white;
+  width: fit-content;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding: 1rem 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-inline: auto;
 }
 
-.userText{
+[data-type-usermsg]{
   display: flex;
-  padding: 0 0.5rem;
-  height: 4rem;
+  align-items: center;
+  height: fit-content;
+  padding: 1rem;
 }
 
-.userText textarea{
-  padding: 0.5rem;
-  outline: none;
-  border-style: none;
-  font-size: 20px;
+[data-type-usermsg] textarea{
   width: 100%;
+  font-size: 20px;
+  outline: none;
   resize: none;
-  border-radius: 0.5rem 0 0 0.5rem !important;
+  height: 100%;
+  border: 1px solid rgba(0,0,0,0.2);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.5rem 0 0 0.5rem;
 }
 
-@media (min-height: 730px) {
-  .messages_box{
-    height: 66vh;
+[data-type-usermsg] button{
+  height: 100%;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+@media (min-width: 768px) {
+
+  .home [data-type-logo-bg]{
+    width: 100%;
+    max-height: 600px;
+  }
+
+  [data-type-icon] img{
+    width: 35px;
+  }
+
+  [data-type-headline]{
+    margin-top: 0;
+    margin-bottom: 3rem;
+  }
+
+  [data-type-headline] h1{
+    font-size: 5rem;
+  }
+
+  .home{
+    grid-template-areas: 'login logo';
+  }
+
+  [data-type-messages]{
+    height: calc(80vh - 5rem);
+  }
+
+  .you,
+  .other{
+    max-width: 330px;
   }
 }
