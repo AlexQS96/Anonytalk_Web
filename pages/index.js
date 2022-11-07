@@ -3,7 +3,7 @@ import {io} from "socket.io-client";
 import { useState, useEffect } from 'react';
 import Msg from '../components/msg';
 
-const socket = io.connect("https://anonytalkserver.herokuapp.com");
+const socket = io.connect("https://anonytalk.onrender.com");
 //const socket = io.connect("http://192.168.1.40:3770");
 
 export default function Home() {
