@@ -1,3 +1,22 @@
+:root{
+  --MainLogo: 8rem;
+  --titlePage: 2.5rem;
+  --subPage: 1rem;
+  --loginLabel: 1rem;
+  --loginInput: 1rem;
+  --loginButton: 1rem;
+  --socialIcons: 1.5rem;
+  --PageIcon: 2.5rem;
+  --headerIcons: 2rem;
+  --msgBox: (75vh - var(--PageIcon));
+  --botMsg: 1rem;
+  --msgName: .8rem;
+  --msg: 1rem;
+  --msgTime: .7rem;
+  --sendInput: 1rem;
+  --sendButton: 1rem;
+}
+
 html,
 body {
   height: 100%;
@@ -15,6 +34,7 @@ html{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 *::-webkit-scrollbar {
@@ -26,22 +46,36 @@ html{
 }
 
 *::-webkit-scrollbar-thumb{
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-button{
-  cursor: pointer;
-  outline: none;
-  border-style: none;
-  border-radius: 0.5rem;
+  border-radius: .5rem;
+  background-color: #27EF9B;
 }
 
 header{
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   padding: 1rem 1rem 0;
   background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,1) 100%);
+}
+
+header #socialIconPath{
+  width: var(--headerIcons);
+  height: var(--headerIcons);
+}
+
+[data-type-logo]{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-weight: bold;
+  color: #27e099;
+  font-size: var(--subPage);
+}
+
+[data-type-logo] svg{
+  width: var(--PageIcon);
+  height: var(--PageIcon);
+  cursor: pointer;
 }
 
 main{
@@ -58,115 +92,121 @@ footer{
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-gap: 1.3rem;
-  padding-left: 1rem;
+  grid-gap: 1rem;
 }
 
-.social a img{
+.social a svg{
   display: flex;
-  width: 1.5rem;
-  filter: brightness(0.85);
-  transition: filter .5s;
+  width: var(--socialIcons);
+  height: var(--socialIcons);
 }
 
-.social a img:hover{
-  filter: brightness(0.6);
+#socialIconPath path{
+  fill: #00EAAF;
+}
+
+#socialIconStroke path{
+  stroke: #00EAAF;
 }
 
 #__next{
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
+  max-width: 1920px;
+  margin-inline: auto;
 }
 
-[data-type-logo]{
-  width: 3rem;
+button{
   cursor: pointer;
-}
-
-[data-type-icon]{
-  display: flex;
-  align-items: center;
-  margin-top: 0.3rem;
-  font-weight: bold;
-  gap: 0.3rem;
-}
-
-[data-type-icon] img{
-  width: 30px;
-  opacity: 0.7;
+  outline: none;
+  border-style: none;
+  border-radius: 0.5rem;
 }
 
 .button_1{
   font-weight: 600;
-  background-color: #27EF9B;
+  background-color: #00EAAF;
   color: #fff;
   padding: 1rem;
   width: fit-content;
+  border: 1px solid transparent;
   font-family: 'Varela Round', sans-serif;
+  transition: background-color .5s, border-color .5s;
+}
+
+.button_1:hover{
+  background-color: #01FF94;
+}
+
+.button_1:focus{
+  background-color: #01FF94;
+  border-color: #01FF94;
 }
 
 .home{
-  display: grid;
-  grid-template-areas: 
-  'logo'
-  'login';
+  display: flex;
+  flex-direction: column;
   place-items: center;
+  place-content: center;
   height: 100%;
   width: 100%;
 }
 
-.home [data-type-logo-bg]{
-  width: 8rem;
+[data-type-logo-bg]{
+  width: var(--MainLogo);
+  height: var(--MainLogo);
+  order: 0;
+}
+
+[data-type-logo-bg] svg{
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  grid-area: logo;
+  display: block;
 }
 
 [data-type-user-index]{
-  grid-area: login;
-  width: 100%;
+  order: 1;
 }
 
 [data-type-headline]{
   margin-inline: auto;
   width: fit-content;
   margin-bottom: 2rem;
-  margin-top: -5rem;
-}
-
-[data-type-headline] h4{
-  text-align: right;
-  margin-right: 0.5rem;
-  color: rgba(0,0,0,0.7);
 }
 
 [data-type-headline] h1{
   font-family: 'Varela Round', sans-serif;
   letter-spacing: 0.5rem;
   color: rgba(0,0,0,0.8);
-  font-size: 3rem;
+  font-size: var(--titlePage);
+}
+
+[data-type-headline] h4{
+  text-align: right;
+  margin-right: 0.5rem;
+  color: rgba(0,0,0,0.7);
+  font-size: var(--subPage);
 }
 
 .login{
   display: flex;
   flex-direction: column;
-  width: 85%;
+  width: 85vw;
   margin: 1rem auto;
   max-width: 400px;
   border: 1.5px solid rgba(0,0,0,0.03);
   background-color: rgba(255,255,255,0.8);
   border-radius: 1rem;
-  padding: 2.5rem;
+  padding: 2rem;
   gap: 1rem;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 5%), 0 4px 6px -4px rgb(0 0 0 / 5%);
 }
 
-.login h1,
-.login h3{
-  color: #000;
-}
-
 .login label{
+  font-size: var(--loginLabel);
   font-style: italic;
   margin-left: 0.3rem;
   margin-bottom: -0.8rem;
@@ -181,9 +221,13 @@ footer{
   border: 1.5px solid rgba(0,0,0,0.1);
   height: 3rem;
   border-radius: 0.5rem;
-  text-indent: 5px;
-  font-size: 20px;
+  text-indent: 10px;
+  font-size: var(--loginInput);
   transition: border-color .5s;
+}
+
+.login input:focus{
+  border-color: #27e099;
 }
 
 .login .invalid{
@@ -191,7 +235,8 @@ footer{
 }
 
 .login button{
-  font-size: 1rem;
+  font-size: var(--loginButton);
+  padding: .75rem 1rem;
 }
 
 .chat{
@@ -205,7 +250,7 @@ footer{
 [data-type-messages]{
   color: #000;
   overflow-y: auto;
-  height: calc(70vh - 6rem);
+  height: calc(var(--msgBox));
   padding: 2rem;
 }
 
@@ -226,24 +271,25 @@ footer{
   max-width: 40vw;
   border-radius: 0.5rem;
   padding: 0.5rem;
+  font-size: var(--msg);
 }
 
 .you p:nth-of-type(1),
 .other p:nth-of-type(1){
-  font-size: 0.7rem;
+  font-size: var(--msgName);
   margin-bottom: 0.5rem;
 }
 
 .you p:nth-of-type(3),
 .other p:nth-of-type(3){
-  font-size: 0.8rem;
+  font-size: var(--msgTime);
   margin-top: 0.5rem;
   text-align: right;
 }
 
 .you{
   margin-right: auto;
-  background-color: #0091ff;
+  background-color: #00a6ff;
 }
 
 .other{
@@ -257,7 +303,7 @@ footer{
   width: fit-content;
   border-radius: 0.5rem;
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: var(--botMsg);
   padding: 1rem 1rem;
   display: flex;
   justify-content: center;
@@ -274,30 +320,64 @@ footer{
 
 [data-type-usermsg] textarea{
   width: 100%;
-  font-size: 20px;
+  font-size: var(--sendInput);
   outline: none;
   resize: none;
   height: 100%;
   border: 1px solid rgba(0,0,0,0.2);
-  padding: 0.2rem 0.4rem;
+  padding: 0.5rem 1rem;
   border-radius: 0.5rem 0 0 0.5rem;
 }
 
 [data-type-usermsg] button{
   height: 100%;
   border-radius: 0 0.5rem 0.5rem 0;
-  font-size: 1.1rem;
+  font-size: var(--sendButton);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 990px) {
 
-  .home [data-type-logo-bg]{
-    width: 100%;
-    max-height: 600px;
+  :root{
+    --MainLogo: 40vw;
+    --titlePage: 4.5rem;
+    --subPage: 1.4rem;
+    --loginLabel: 1.3rem;
+    --loginInput: 1.4rem;
+    --loginButton: 1.1rem;
+    --socialIcons: 1.5rem;
+    --PageIcon: 3.4rem;
+    --headerIcons: 2.2rem;
+    --botMsg: 1rem;
+    --msgName: 1.2rem;
+    --msg: 1.4rem;
+    --msgTime: 1rem;
+    --sendInput: 1.5rem;
+    --sendButton: 1.5rem;
   }
 
-  [data-type-icon] img{
-    width: 35px;
+  #__next{
+    width: 90%;
+  }
+
+  .home{
+    flex-direction: row;
+    flex-flow: row-reverse;
+    justify-content: space-around;
+    gap: 1rem;
+  }
+
+  .login{
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .social{
+    justify-content: left;
+    padding-left: 2.5rem;
+  }
+
+  .chatOn{
+    padding-left: 1rem !important;
   }
 
   [data-type-headline]{
@@ -305,20 +385,40 @@ footer{
     margin-bottom: 3rem;
   }
 
-  [data-type-headline] h1{
-    font-size: 5rem;
-  }
-
-  .home{
-    grid-template-areas: 'login logo';
-  }
-
-  [data-type-messages]{
-    height: calc(80vh - 5rem);
-  }
-
   .you,
   .other{
     max-width: 330px;
   }
+}
+
+@media (min-width: 2560px){
+
+  :root{
+    --MainLogo: 45rem;
+    --titlePage: 7rem;
+    --subPage: 2rem;
+    --loginLabel: 1.5rem;
+    --loginInput: 1.9rem;
+    --loginButton: 1.4rem;
+    --socialIcons: 2rem;
+    --PageIcon: 5rem;
+    --headerIcons: 3.7rem;
+    --botMsg: 1rem;
+    --msgName: 1.5rem;
+    --msg: 1.7rem;
+    --msgTime: 1.3rem;
+    --sendInput: 2rem;
+    --sendButton: 2rem;
+  }
+
+  .login{
+    margin-block: 2rem;
+    gap: 1.7rem;
+    max-width: 450px;
+  }
+
+  .social{
+    padding-left: 10vw;
+  }
+
 }
